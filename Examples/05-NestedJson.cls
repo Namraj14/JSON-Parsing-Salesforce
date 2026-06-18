@@ -18,3 +18,35 @@ public class ContactWrapper {
 
     public String email;
 }
+
+
+String jsonResponse = '{
+    "account":{
+        "name":"ABC Corp",
+        "industry":"Technology"
+    },
+    "contacts":[
+        {
+            "name":"Raj",
+            "email":"raj@test.com"
+        },
+        {
+            "name":"Amit",
+            "email":"amit@test.com"
+        }
+    ]
+}';
+
+CustomerWrapper customer =
+    (CustomerWrapper)
+    JSON.deserialize(
+        jsonResponse,
+        CustomerWrapper.class
+    );
+
+System.debug(customer.account.name);
+
+for(ContactWrapper con : customer.contacts) {
+
+    System.debug(con.name);
+}
